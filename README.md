@@ -37,6 +37,7 @@ class LogRequest
   end
 end
 
+require 'net/http/middleware'
 # Adding middlewares to configurator
 Net::HTTP.configure_middleware do |chain|
   chain.use LogRequest, Logger.new(STDOUT)
