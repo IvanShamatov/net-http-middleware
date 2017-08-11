@@ -4,6 +4,11 @@ Middlewares for Net::HTTP request method.
 
 ## Usage
 
+There are couple of requirements for middleware to be implemented
+1. Chain as a first argument for initializer of your middleware
+2. 2 params for call: Request-object and body to be passed to call
+3. Return the result of @chain.call(req, body)
+
 ```ruby
 # Example of tracer, which will add header to each outgoing request
 class OpenTraceId
@@ -11,9 +16,9 @@ class OpenTraceId
     @chain = chain
   end
 
-  def call(req, body = nil, &block)
+  def call(req, body = nil)
     request.add_field('X-Custom-CrossService-RequestId', SecureRandom.uuid)
-    @chain.call(req, body, block)
+    @chain.call(req, body)
   end
 end
 
@@ -24,9 +29,9 @@ class LogRequest
     @logger = logger
   end
 
-  def call(req, body = nil, &block)
+  def call(req, body = nil)
     @logger.info('We log before')
-    response = @chain.call(req, body, block)
+    response = @chain.call(req, body)
     @logger.info('We log after')
     response
   end
