@@ -1,0 +1,63 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  DisplayCopNames: true
+  Exclude:
+    - bin/*
+    - spec/spec_helper.rb
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - net-http-middleware.gemspec
+
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+
+Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Layout/FirstParameterIndentation:
+  EnforcedStyle: consistent
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Layout/IndentArray:
+  EnforcedStyle: consistent
+
+Layout/IndentHash:
+  EnforcedStyle: consistent
+
+Style/ModuleFunction:
+  Enabled: false
+
+Style/RescueModifier:
+  Exclude:
+    - spec/**/*
+
+Style/TrailingUnderscoreVariable:
+  Enabled: false
