@@ -15,7 +15,7 @@ module Net
     alias_method(:orig_request, :request) unless method_defined?(:orig_request)
 
     def request(req, body = nil, &block)
-      Net::HTTP.middleware_chain.call(req, body = nil) do
+      Net::HTTP.middleware_chain.call(req, body) do
         orig_request(req, body, &block)
       end
     end
